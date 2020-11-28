@@ -1,0 +1,48 @@
+%% -----------------------------------
+%% ---> À MODIFIER PAR L'ETUDIANT / TO BE MODIFIED BY THE STUDENT <---
+%% -----------------------------------
+%%
+%% Commandes qui affichent le titre du document, le nom de l'auteur, etc.
+\newcommand\monTitre{My fancy thesis title}
+\newcommand\monTitreFR{Mon titre de thèse}
+\newcommand\monPrenom{Mathieu}
+\newcommand\monNom{Besançon}
+\newcommand\monDepartement{Mathématiques et Génie Industriel}  % Department
+\newcommand\maDiscipline{Mathématiques de l'Ingénieur} % The title of the degree
+\newcommand\monDiplome{D}        % (M)aîtrise ou (D)octorat / (M)aster or Ph(D)
+\newcommand\anneeDepot{2020}    % Year
+\newcommand\moisDepot{Décembre}       % Month
+\newcommand\monSexe{M}           % "M" ou "F" = Gender
+\newcommand\PageGarde{O}         % "O" ou "N" = Yes or No
+\newcommand\AnnexesPresentes{O}  % "O" ou "N". Indique si le document comprend des annexes. / If the thesis includes appendices = O Yes or N = No.
+\newcommand\mesMotsClef{demand response, pricing, bilevel optimization, robust optimization}
+\newcommand\mesMotsClefFR{réponse de la demande, tarification, optimisation biniveau, optimisation robuste}
+%%
+%%  DEFINITION DU / OF JURY
+%%
+%%  Pour la définition du jury, les macros suivantes sont definies:
+%%  \PresidentJury, \DirecteurRecherche, \CoDirecteurRecherche, \MembreJury, \MembreExterneJury
+%%
+%%  Toutes les macros prennent 3 paramètres: Sexe (M/F), Nom, Prénom
+%%  All the macros have 3 parameters: Sex (M/F), Last name, First name
+\newcommand\monJury{
+\PresidentJury{M}{}{}\\
+\DirecteurRecherche{M}{}{}\\
+\CoDirecteurRecherche{M}{}{}\\
+\MembreJury{M}{}{}\\
+\MembreExterneJury{F}{}{}
+}
+
+\newcommand\monJuryCentrale{
+\begin{tabular}{lll}
+	\textbf{Président} & Gilles Savard & Professeur, Polytechnique Montréal \\
+	\textbf{Rapporteure} & Ivana Ljubic & Professeure, ESSEC \\
+	\textbf{Rapporteur} & Martin Schmidt & Professeur, Universität Trier \\
+	\textbf{Examinateur} & Wolfram Wiesemann & Professeur, Imperial College Business School \\
+	\textbf{Directeur} de thèse & Frédéric Semet & Professeur, Centrale Lille \\
+	\textbf{Co-Directeur} de thèse & Michel Gendreau & Professeur, Polytechnique Montréal \\
+	\textbf{Co-encadrant} & Miguel F. Anjos & Professeur, University of Edinburgh \\
+	\textbf{Co-encadrante} & Luce Brotcorne & Directrice de Recherche, INRIA \\
+	\textbf{Invité} & Roland Malhamé & Professeur, Polytechnique Montréal
+\end{tabular}
+}

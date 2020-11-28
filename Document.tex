@@ -1,0 +1,245 @@
+% \documentclass[letterpaper,12pt,oneside, draft]{book}
+\documentclass[letterpaper,12pt,oneside]{book}
+%%
+%%  Gabarit de mémoire de maîtrise ou thèse de doctorat.
+%%  Template for dissertations and theses @ Polytechnique Montreal.
+
+%%  Normalement, il n'est pas nécessaire de modifier ce document
+%%  sauf pour établir le langage (français ou anglais) et pour changer les noms des
+%%  fichiers à inclure.
+%%  Usually, this document needs to be modified only to set up the language (French or English)
+%%  and to change the names of the files to include.
+%%
+%%  Version: 2018-07-31
+%%
+%%  Accepte les caractères accentués dans le document (UTF-8).
+
+\makeatletter
+\def\bstctlcite{\@ifnextchar[{\@bstctlcite}{\@bstctlcite[@auxout]}}
+\def\@bstctlcite[#1]#2{\@bsphack
+ \@for\@citeb:=#2\do{%
+   \edef\@citeb{\expandafter\@firstofone\@citeb}%
+   \if@filesw\immediate\write\csname #1\endcsname{\string\citation{\@citeb}}\fi}%
+ \@esphack}
+\makeatother
+
+% CETTE COMMANDE ÉTABLIT LE LANGAGE DE LA THÈSE : ÉCRIRE french POUR UNE THÈSE EN FRANÇAIS
+% THE NEXT COMMAND DETERMINES THE LANGUAGE OF THE THESIS: WRITE english FOR A THESIS IN ENGLISH
+\newcommand\Langue{english}
+
+% This command defines the school used, either centrale or poly
+\newcommand\School{centrale}
+
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+%%
+%% Support pour l'anglais et le français (français par défaut).
+%\usepackage[cyr]{aeguill}
+\usepackage{lmodern}      % Police de caractères plus complète et généralement indistinguable visuellement de la police standard de LaTeX (Computer Modern).
+\usepackage[T1]{fontenc}  % Bon encodage des caractères pour qu'Acrobat Reader reconnaisse les accents et les ligatures telles que ffi.
+
+% le langage par défaut est le dernier de la liste, c'est-à-dire français
+\ifthenelse{\equal{\Langue}{english}}{
+	\usepackage[french,english]{babel}
+}{
+	\usepackage[english,french]{babel}
+}
+
+%%
+%% Charge le module d'affichage graphique.
+\usepackage{graphicx}
+% \usepackage{epstopdf}  % Permet d'utiliser des .eps avec pdfLaTeX.
+%%
+%% Recherche des images dans les répertoires.
+\graphicspath{{images/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+
+%%
+%% Un float peut apparaître seulement après sa définition, jamais avant.
+\usepackage{flafter,placeins}
+%%
+%% Utilisation de natbib pour les citations et la bibliographie.
+%\usepackage{natbib}
+%%
+%% Autres packages.
+\usepackage[hyphens,spaces,obeyspaces]{url}
+\usepackage{amsmath,color,soulutf8,longtable,colortbl,setspace,xspace,pdflscape,cite,amssymb}
+%%
+%% Support des acronymes.
+\usepackage[nolist]{acronym}
+
+\onehalfspacing                % Interligne 1.5.
+%%
+%% Définition d'un style de page avec seulement le numéro de page à
+%% droite. On s'assure aussi que le style de page par défaut soit
+%% d'afficher le numéro de page en haut à droite.
+\usepackage{fancyhdr}
+\fancypagestyle{pagenumber}{\fancyhf{}\fancyhead[R]{\thepage}}
+\renewcommand\headrulewidth{0pt}
+\makeatletter
+\let\ps@plain=\ps@pagenumber
+\makeatother
+%%
+%% Module qui permet la création des bookmarks dans un fichier PDF.
+\usepackage{hyperref}
+\usepackage{caption}  % Hyperlink on figure and not its title.
+\usepackage{float}
+
+\usepackage{amsthm}
+\addto\captionsfrench{\renewcommand\proofname{Proof}}
+
+\RequirePackage[chapter]{algorithm}
+\usepackage{algpseudocode}
+
+%% TIKZ
+
+\usepackage{pgf,tikz,pgfplots,tikzit}
+\pgfplotsset{compat=newest}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usetikzlibrary[patterns]
+
+\makeatletter
+\providecommand*{\toclevel@compteur}{0}
+\makeatother
+
+\usepackage{multirow}
+
+\newcommand{\mathbbm}[1]{\text{\usefont{U}{bbm}{m}{n}#1}}
+
+\usepackage[capitalize,nameinlink]{cleveref}[0.21]
+
+%%
+%% Définitions spécifiques au format de rédaction de Poly.
+%% Here we define the Poly formatting.
+\RequirePackage[\Langue]{MemoireThese}
+%%
+%% Définitions spécifiques à l'étudiant.
+\include{0-Definitions_Etudiant}
+\ifthenelse{\equal{\monDiplome}{M}}{
+\newcommand\monSujet{Mémoire de maîtrise}
+\newcommand\monDipl{Maîtrise ès sciences appliquées}
+}{
+\newcommand\monSujet{Thèse de doctorat}
+\newcommand\monDipl{Philosophi\ae{} Doctor}
+}
+%%
+%% Informations qui sont stockées dans un fichier PDF.
+\hypersetup{
+  pdftitle={\monTitre},
+  pdfsubject={\monSujet},
+  pdfauthor={\monPrenom{} \monNom},
+  pdfkeywords={\mesMotsClef},
+  bookmarksnumbered,
+  pdfstartview={FitV},
+  hidelinks,
+  linktoc=all
+}
+
+%% for fancy theory
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{property}{Property}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+%% useful for optimization people
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+
+%%
+%% Page de titre du mémoire.
+% \include{Pagegarde}
+
+\ifthenelse{\equal{\School}{centrale}}{
+    \include{pagegarde_centrale}
+}{
+    \include{Pagegarde}
+}
+
+%% custom line break for compact abstract
+\newcommand\clinebreak{
+\ifthenelse{\equal{\School}{centrale}}{}{
+    \par
+}
+}
+
+\pagestyle{pagenumber}%
+% \include{1-Dedicace}          % Dédicace du document.
+\include{2-Remerciements}     % Remerciements.
+
+\ifthenelse{\equal{\School}{centrale}}{
+    % no abstract here for Centrale
+}{
+    \include{3-MergedAbstracts}      % Both abstracts merged
+}
+
+{\setlength{\parskip}{0pt}
+%%
+%% Table des matières.
+\ifthenelse{\equal{\Langue}{english}}{
+	\renewcommand\contentsname{TABLE OF CONTENTS}
+}{
+	\renewcommand\contentsname{TABLE DES MATIÈRES}
+}
+\tableofcontents
+%%
+%% Liste des tableaux.
+\ifthenelse{\equal{\Langue}{english}}{
+	\renewcommand\listtablename{LIST OF TABLES}
+}{
+	\renewcommand\listtablename{LISTE DES TABLEAUX}
+}\listoftables
+%%
+%% Table des figures.
+\ifthenelse{\equal{\Langue}{english}}{
+	\renewcommand\listfigurename{LIST OF FIGURES}
+}{
+	\renewcommand\listfigurename{LISTE DES FIGURES}
+}\listoffigures
+%%
+%% Liste des annexes au besoin.
+}
+
+\include{4-Sigles_Abrev}       % Liste des sigles et abréviations.
+\ifthenelse{\equal{\AnnexesPresentes}{O}}{\listofappendices}{}
+\mainmatter
+\include{5-Introduction}         % Introduction au sujet de recherche.
+\include{5-1-litterature-review} % Introduction au sujet de recherche.
+\include{6-Work_synthesis}       % Revue de littérature.
+\include{7-Theme1}               % Premier thème (Doctorat) ou "Détails de la Solution" (Maîtrise).
+\include{7-Theme2}               % Second thème (Doctorat) ou "Résultats théoriques et expérimentaux" (Maîtrise).
+\include{7-Theme3}               % Troisième thème (Doctorat) ou effacez ce fichier si vous êtes à la Maîtrise.
+\include{8-Conclusion}           % Conclusion.
+
+%\backmatter
+\ifthenelse{\equal{\Langue}{english}}{
+	\renewcommand\bibname{REFERENCES}
+	\bibliography{Document}
+	\bibliographystyle{IEEEtran}			% Bibliography style.
+}{
+	\renewcommand\bibname{RÉFÉRENCES}
+	\bibliography{Document}
+	\bibliographystyle{IEEEtran-francais}    % Style de la bibliographie.
+}
+
+\include{3-Resume_etendu}
+
+\ifthenelse{\equal{\School}{centrale}}{
+    \include{3-OnePageAbstract}
+}{
+    % if Poly then abstract already at the beginning
+}
+
+
+%
+\ifthenelse{\equal{\AnnexesPresentes}{O}}{
+	\appendix%
+	\newcommand{\Annexe}[1]{\annexe{#1}\setcounter{figure}{0}\setcounter{table}{0}\setcounter{footnote}{0}}%
+	\include{9-Appendices.tex}}
+{}
+\end{document}

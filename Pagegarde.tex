@@ -1,0 +1,46 @@
+\frontmatter
+% Compte optionellement la page de garde dans la pagination.
+\ifthenelse{\equal{\PageGarde}{O}}{\addtocounter{page}{1}}{}
+\thispagestyle{empty}%
+\begin{center}%
+\vspace*{\stretch{0.1}}
+\textbf{POLYTECHNIQUE MONTRÉAL}\\
+affiliée à l'Université de Montréal\\
+\vspace*{\stretch{1}}
+\textbf{\large{\monTitre}}\\
+\vspace*{\stretch{1}}
+\textbf{\MakeUppercase{\monPrenom~\monNom}}\\
+Département de~{\monDepartement}\\
+\textbf{Polytechnique Montréal}\\
+et \\
+CRIStAL, INOCS \& INRIA\\
+\textbf{Centrale Lille}\\
+\vspace*{\stretch{1}}
+\ifthenelse{\equal{\monDiplome}{M}}{Mémoire présenté}{Thèse en cotutelle présentée} en vue de l'obtention du diplôme de~\emph{\monDipl}\\
+\maDiscipline\\
+\vskip 0.4in
+\moisDepot~\anneeDepot
+\end{center}%
+\vspace*{\stretch{1}}
+\copyright~\monPrenom~\monNom, \anneeDepot.
+%%
+%% Identification des membres du jury.
+%%
+\newpage\thispagestyle{empty}%
+\begin{center}%
+
+\vspace*{\stretch{0.1}}
+\textbf{POLYTECHNIQUE MONTRÉAL}\\
+affiliée à l'Université de Montréal\\
+\vspace*{\stretch{2}}
+Ce\ifthenelse{\equal{\monDiplome}{M}}{~mémoire intitulé}{tte thèse intitulée} :\\
+\vspace*{\stretch{1}}
+\textbf{\monTitre}\\
+\end{center}
+\vspace*{\stretch{1}}
+présenté\ifthenelse{\equal{\monDiplome}{M}}{}{e}
+par~\textbf{\mbox{\monPrenom~\MakeUppercase{\monNom}}}\\
+en vue de l'obtention du diplôme de~\emph{\mbox{\monDipl}}\\
+a été dûment accepté\ifthenelse{\equal{\monDiplome}{M}}{}{e} par le jury d'examen constitué de :\\
+
+\monJury

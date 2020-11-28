@@ -1,0 +1,23 @@
+% !TEX root = Document.tex
+
+% Liste des sigles et abbréviations / List of acronyms and abbreviations
+\ifthenelse{\equal{\Langue}{english}}{
+	\newcommand\abbrevname{LIST OF SYMBOLS AND ACRONYMS}
+}{
+	\newcommand\abbrevname{LISTE DES SIGLES ET ABRÉVIATIONS}
+}
+\chapter*{\abbrevname}
+\addcontentsline{toc}{compteur}{\abbrevname}
+\pagestyle{pagenumber}
+
+\begin{longtable}{lp{5in}}
+DR       & Demand Response\\
+LCP & Linear Complementarity Problem \\
+LP & Linear (Optimization) Problem\\
+MIBLP & Mixed-Integer Bilevel Linear (Optimization) Problem\\
+MILP & Mixed-Integer Linear (Optimization) Problem \\
+MINLP & Mixed-Integer Non-Linear (Optimization) Problem \\
+NORBiP & Near-Optimal Robust Bilevel Problem\\
+TLOU  & Time-and-Level-of-Use\\
+TOU  & Time-of-Use
+\end{longtable}

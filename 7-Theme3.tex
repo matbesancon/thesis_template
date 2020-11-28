@@ -1,0 +1,29 @@
+% !TEX root = Document.tex
+% This is the example of a chapter submitted as an article but not accepted yet.
+% Not all chapters must be published already.
+
+\Chapter{NEAR-OPTIMAL ROBUST BILEVEL OPTIMIZATION}\label{chap:NORBiP}
+
+This chapter was submitted to a Journal in October 2020.
+
+Authors: Mathieu Besançon, John von Neumann.
+
+\subsection*{Abstract}
+
+\section{Introduction}
+
+\section{Model}
+This section is just here to show an optimization problem, Problem \eqref{prob:foundation}.
+I prefer using {subequations} for all my align environment, except when at
+most one equation is numbered.
+
+\begin{subequations}\label{prob:foundation}
+\begin{align}
+\min_{x,v}\,\, & F(x,v)\label{eq:NORBiPobj}\\
+\text{s.t.} \,\, & G_k(x,v) \leq 0 &\forall k \in \left[\![m_u\right]\!]\label{eq:redundant} \\
+& f(x,v) \leq \phi(x)\\
+& g(x, v) \leq 0\\
+& G_k(x,z) \leq 0\,\, \forall z \in \mathcal{Z}(x;\delta) &\forall k \in \left[\![m_u\right]\!]\label{eq:robcons}\\
+& x \in \mathcal{X}.\label{eq:foundationlast}
+\end{align}
+\end{subequations}
