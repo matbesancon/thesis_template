@@ -169,8 +169,8 @@
 }
 
 \pagestyle{pagenumber}%
-% \include{1-Dedicace}          % Dédicace du document.
-\include{2-Remerciements}     % Remerciements.
+% \include{1-Dedication}          % Dedication - Dédicace du document.
+\include{2-Acknowledgments}     % Acknowledgments / Remerciements.
 
 \ifthenelse{\equal{\School}{centrale}}{
     % no abstract here for Centrale
@@ -240,6 +240,6 @@
 \ifthenelse{\equal{\AnnexesPresentes}{O}}{
 	\appendix%
 	\newcommand{\Annexe}[1]{\annexe{#1}\setcounter{figure}{0}\setcounter{table}{0}\setcounter{footnote}{0}}%
-	\include{9-Appendices.tex}}
+	\include{9-Appendices}}
 {}
 \end{document}
